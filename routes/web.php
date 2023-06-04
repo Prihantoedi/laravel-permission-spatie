@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [UserController::class, "index"])->name("home.page");
+Route::get('/login', [LoginController::class, "index"])->name("login");
+Route::post('/login-attempt', [LoginController::class, "login_attempt"])->name("login.attempt");
+Route::get('logout', [LoginController::class, "logout_account"])->name("logout");
+
+Route::group(["middleware" => ["auth"]], function(){
+    Route::get('/private', [UserController::class, "private_page"])->name("private.page");
 });
+
+// Route::get('/')
