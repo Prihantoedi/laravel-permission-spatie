@@ -43,9 +43,9 @@ class PermissionDemoSeeder extends Seeder
         $adminRole->givePermissionTo('view posts');
         $adminRole->givePermissionTo('create posts');
         $adminRole->givePermissionTo('edit posts');
-        $adminRole->givePermission('delete posts');
-        $adminRole->givePermission('publish posts');
-        $adminRole->givePermission('unpublish posts');
+        $adminRole->givePermissionTo('delete posts');
+        $adminRole->givePermissionTo('publish posts');
+        $adminRole->givePermissionTo('unpublish posts');
 
         $superadminRole = Role::create(['name' => 'super-admin']);
 
