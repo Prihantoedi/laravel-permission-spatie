@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +29,6 @@ Route::group(["middleware" => ["auth"]], function(){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::put('post/{id}/publish', [PostController::class, 'publish'])->name('post.publish');
+Route::put('post/{id}/unpublish', [PostController::class, 'unpublish'])->name('post.unpublish');
